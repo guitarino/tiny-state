@@ -1,12 +1,16 @@
 var createState = function(global) {
   'use strict';
+
   // Trying not to pollute the namespace
   var sub = 'Symbol' in global ? global.Symbol() : '_subscribers' + Math.random();
+
+  // This will allow us to call hOP on object that don't inherit Object.prototype
+  var hOP = Object.prototype.hasOwnProperty;
 
   var State = function(iState) {
     Object.defineProperty(this, sub, {value: []}); // should not show up in for(..in..) loop, or be removable
     for(var key in iState) {
-      if(iState.hasOwnProperty(key)) {
+      if(hOP.call(iState, key)) {
         this[key] = iState[key];
       }
     }
