@@ -127,7 +127,7 @@ class MyApp extends React.Component {
 
   // don't forget to unsubscribe before the component is discarded
   componentWillUnmount() {
-    state.a.unsubscribe(this);
+    state.c.unsubscribe(this);
     state.MyApp.unsubscribe(this);
     delete state.MyApp; // no longer need to keep state.MyApp
   }
