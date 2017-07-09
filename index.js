@@ -61,6 +61,6 @@ var createState = function(global) {
       return new State({});
     }
   };
-}(window || global);
+}((this && this.window) || global);
 
 try { module.exports = createState } catch(oops) { }
